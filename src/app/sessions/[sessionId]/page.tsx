@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { SessionDetailClient } from "@/components/session/session-detail-client";
 import type { SessionDetailResponse } from "@/lib/types";
-import Link from "next/link";
 
 export default function SessionDetailPage() {
   const params = useParams<{ sessionId: string }>();
@@ -25,9 +24,6 @@ export default function SessionDetailPage() {
   if (error) {
     return (
       <div className="p-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
-          &larr; Dashboard
-        </Link>
         <div className="text-center py-12 text-muted-foreground">Session not found</div>
       </div>
     );
@@ -36,21 +32,17 @@ export default function SessionDetailPage() {
   if (!data) {
     return (
       <div className="p-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
-          &larr; Dashboard
-        </Link>
-        <div className="text-center py-12 text-muted-foreground">Loading...</div>
+        <div className="flex gap-3 py-12 justify-center" aria-busy="true" aria-label="Loading session">
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="h-2 w-2 rounded-full bg-muted-foreground/30 animate-pulse" style={{ animationDelay: `${i * 150}ms` }} />
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-4">
-        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
-          &larr; Dashboard
-        </Link>
-      </div>
       <SessionDetailClient sessionId={sessionId} initialData={data} />
     </div>
   );
