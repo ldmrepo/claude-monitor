@@ -1,8 +1,17 @@
-# Claude Monitor
+<p align="center">
+  <img src="docs/images/icon.png" alt="Claude Monitor" width="120" />
+</p>
 
-Claude Code 세션을 실시간으로 모니터링하는 웹 대시보드.
+<h1 align="center">Claude Monitor</h1>
 
-Claude Code Hook을 통해 세션, 도구 실행, 태스크, 에이전트 이벤트를 수집하고, 웹 브라우저에서 실시간으로 확인할 수 있습니다.
+<p align="center">Claude Code 세션을 실시간으로 모니터링하는 웹 대시보드</p>
+
+<p align="center">
+  Claude Code Hook을 통해 세션, 도구 실행, 태스크, 에이전트 이벤트를 수집하고,<br/>
+  웹 브라우저에서 실시간으로 확인할 수 있습니다.
+</p>
+
+![Architecture](docs/images/hero.png)
 
 ## 스크린샷
 
