@@ -24,7 +24,7 @@ export default function SessionDetailPage() {
   if (error) {
     return (
       <div className="p-6 max-w-7xl mx-auto">
-        <div className="text-center py-12 text-muted-foreground">Session not found</div>
+        <div className="text-center py-12">Session not found</div>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import type { AgentRow } from "@/lib/types";
 
 export function AgentPanel({ agents }: { agents: AgentRow[] }) {
   if (agents.length === 0) {
-    return <div className="text-center py-8 text-muted-foreground text-sm">No agents yet</div>;
+    return <div className="text-center py-8 text-sm">No agents yet</div>;
   }
 
   return (
@@ -22,16 +22,16 @@ export function AgentPanel({ agents }: { agents: AgentRow[] }) {
       <TableBody>
         {agents.map((a) => (
           <TableRow key={a.agentId}>
-            <TableCell className="font-mono text-xs">{a.agentId.slice(0, 16)}</TableCell>
-            <TableCell className="text-xs">{a.agentType || "—"}</TableCell>
+            <TableCell className="font-mono text-sm">{a.agentId.slice(0, 16)}</TableCell>
+            <TableCell className="text-sm">{a.agentType || "—"}</TableCell>
             <TableCell>
               <StatusBadge state={a.currentState} />
             </TableCell>
             <TableCell>
-              <TimeAgo date={a.startedAt} className="text-xs text-muted-foreground" />
+              <TimeAgo date={a.startedAt} className="text-sm" />
             </TableCell>
             <TableCell>
-              <TimeAgo date={a.lastActivityAt} className="text-xs text-muted-foreground" />
+              <TimeAgo date={a.lastActivityAt} className="text-sm" />
             </TableCell>
           </TableRow>
         ))}

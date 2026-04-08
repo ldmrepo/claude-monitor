@@ -19,7 +19,7 @@ export function StatsCards(props: StatsCardsProps) {
         <div key={s.title} className="rounded-lg border border-border/50 bg-card p-4">
           <div className="flex items-center gap-2 mb-1">
             <span className={`h-2 w-2 rounded-full ${s.dot}`} />
-            <span className="text-sm text-muted-foreground">{s.title}</span>
+            <span className="text-sm">{s.title}</span>
           </div>
           <p className="text-2xl font-semibold tabular-nums">{s.value}</p>
         </div>

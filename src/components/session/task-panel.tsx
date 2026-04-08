@@ -5,7 +5,7 @@ import type { TaskRow } from "@/lib/types";
 
 export function TaskPanel({ tasks }: { tasks: TaskRow[] }) {
   if (tasks.length === 0) {
-    return <div className="text-center py-8 text-muted-foreground text-sm">No tasks yet</div>;
+    return <div className="text-center py-8 text-sm">No tasks yet</div>;
   }
 
   return (
@@ -23,20 +23,20 @@ export function TaskPanel({ tasks }: { tasks: TaskRow[] }) {
         {tasks.map((t) => (
           <TableRow key={t.taskId}>
             <TableCell className="text-sm">
-              {t.taskSubject || <span className="font-mono text-xs">{t.taskId.slice(0, 16)}</span>}
+              {t.taskSubject || <span className="font-mono text-sm">{t.taskId.slice(0, 16)}</span>}
             </TableCell>
             <TableCell>
               <StatusBadge state={t.currentState} />
             </TableCell>
-            <TableCell className="text-xs text-muted-foreground">
+            <TableCell className="text-sm">
               {t.assigneeName || "—"}
             </TableCell>
             <TableCell>
-              <TimeAgo date={t.createdAt} className="text-xs text-muted-foreground" />
+              <TimeAgo date={t.createdAt} className="text-sm" />
             </TableCell>
             <TableCell>
               {t.completedAt ? (
-                <TimeAgo date={t.completedAt} className="text-xs text-muted-foreground" />
+                <TimeAgo date={t.completedAt} className="text-sm" />
               ) : "—"}
             </TableCell>
           </TableRow>

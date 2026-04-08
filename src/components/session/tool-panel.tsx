@@ -5,7 +5,7 @@ import type { ToolExecRow } from "@/lib/types";
 
 export function ToolPanel({ tools }: { tools: ToolExecRow[] }) {
   if (tools.length === 0) {
-    return <div className="text-center py-8 text-muted-foreground text-sm">No tool executions yet</div>;
+    return <div className="text-center py-8 text-sm">No tool executions yet</div>;
   }
 
   return (
@@ -22,18 +22,18 @@ export function ToolPanel({ tools }: { tools: ToolExecRow[] }) {
       <TableBody>
         {tools.map((t) => (
           <TableRow key={t.toolExecutionId}>
-            <TableCell className="font-mono text-xs font-medium">{t.toolName}</TableCell>
+            <TableCell className="font-mono text-sm font-medium">{t.toolName}</TableCell>
             <TableCell>
               <StatusBadge state={t.currentState} />
             </TableCell>
-            <TableCell className="text-xs text-muted-foreground max-w-[250px] truncate">
+            <TableCell className="text-sm max-w-[250px] truncate">
               {t.errorMessage || t.inputExcerpt || "—"}
             </TableCell>
-            <TableCell className="text-right tabular-nums text-xs">
+            <TableCell className="text-right tabular-nums text-sm">
               {t.durationMs != null ? `${t.durationMs}ms` : "—"}
             </TableCell>
             <TableCell>
-              <TimeAgo date={t.requestedAt} className="text-xs text-muted-foreground" />
+              <TimeAgo date={t.requestedAt} className="text-sm" />
             </TableCell>
           </TableRow>
         ))}

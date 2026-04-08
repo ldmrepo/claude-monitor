@@ -52,7 +52,7 @@ export function ToolTimeline({ initialTools }: { initialTools: ToolExec[] }) {
           <button
             key={s}
             onClick={() => setFilter(s)}
-            className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+            className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
               filter === s
                 ? "bg-foreground text-background"
                 : "hover:bg-muted"
@@ -64,7 +64,7 @@ export function ToolTimeline({ initialTools }: { initialTools: ToolExec[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">
+        <div className="text-center py-12">
           No tool executions{filter !== "all" ? ` with state "${filter}"` : ""}
         </div>
       ) : (
@@ -82,26 +82,26 @@ export function ToolTimeline({ initialTools }: { initialTools: ToolExec[] }) {
           <TableBody>
             {filtered.map((t) => (
               <TableRow key={t.toolExecutionId}>
-                <TableCell className="font-mono text-xs font-medium">{t.toolName}</TableCell>
+                <TableCell className="font-mono text-sm font-medium">{t.toolName}</TableCell>
                 <TableCell>
                   <StatusBadge state={t.currentState} />
                 </TableCell>
-                <TableCell className="font-mono text-xs">
+                <TableCell className="font-mono text-sm">
                   <Link
                     href={`/sessions/${t.sessionId}`}
-                    className="hover:underline text-blue-600"
+                    className="hover:underline text-blue-400"
                   >
                     {t.sessionId.slice(0, 8)}...
                   </Link>
                 </TableCell>
-                <TableCell className="text-xs text-muted-foreground max-w-[250px] truncate">
+                <TableCell className="text-sm max-w-[250px] truncate">
                   {t.errorMessage || t.inputExcerpt || "—"}
                 </TableCell>
-                <TableCell className="text-right tabular-nums text-xs">
+                <TableCell className="text-right tabular-nums text-sm">
                   {t.durationMs != null ? `${t.durationMs}ms` : "—"}
                 </TableCell>
                 <TableCell>
-                  <TimeAgo date={t.requestedAt} className="text-xs text-muted-foreground" />
+                  <TimeAgo date={t.requestedAt} className="text-sm" />
                 </TableCell>
               </TableRow>
             ))}

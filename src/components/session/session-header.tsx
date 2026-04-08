@@ -10,7 +10,7 @@ export function SessionHeader({ session }: { session: SessionRow }) {
         <div className="flex items-start justify-between mb-4">
           <div>
             <h1 className="text-xl font-bold font-mono">{session.sessionId}</h1>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm mt-1">
               {session.workingDirectory || "No directory"}
             </p>
           </div>
@@ -19,49 +19,49 @@ export function SessionHeader({ session }: { session: SessionRow }) {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           <div>
-            <span className="text-muted-foreground">Started</span>
+            <span className="">Started</span>
             <p className="font-medium">
               <TimeAgo date={session.startedAt} />
             </p>
           </div>
           <div>
-            <span className="text-muted-foreground">Last Activity</span>
+            <span className="">Last Activity</span>
             <p className="font-medium">
               <TimeAgo date={session.lastActivityAt} />
             </p>
           </div>
           <div>
-            <span className="text-muted-foreground">Permission</span>
+            <span className="">Permission</span>
             <p className="font-medium">{session.permissionMode || "—"}</p>
           </div>
           <div>
-            <span className="text-muted-foreground">Events</span>
+            <span className="">Events</span>
             <p className="font-medium tabular-nums">{session.eventCount}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-4 text-sm mt-4">
           <div>
-            <span className="text-muted-foreground">Tools</span>
+            <span className="">Tools</span>
             <p className="font-medium tabular-nums">{session.toolCallCount}</p>
           </div>
           <div>
-            <span className="text-muted-foreground">Errors</span>
-            <p className="font-medium tabular-nums text-red-600">{session.errorCount}</p>
+            <span className="">Errors</span>
+            <p className="font-medium tabular-nums text-red-400">{session.errorCount}</p>
           </div>
           <div>
-            <span className="text-muted-foreground">Tasks</span>
+            <span className="">Tasks</span>
             <p className="font-medium tabular-nums">{session.activeTaskCount}</p>
           </div>
           <div>
-            <span className="text-muted-foreground">Agents</span>
+            <span className="">Agents</span>
             <p className="font-medium tabular-nums">{session.activeAgentCount}</p>
           </div>
         </div>
 
         {session.lastAssistantMessageExcerpt && (
           <div className="mt-4 p-3 bg-muted rounded-md text-sm">
-            <span className="text-muted-foreground text-xs block mb-1">Last Message</span>
+            <span className="text-xs block mb-1">Last Message</span>
             {session.lastAssistantMessageExcerpt}
           </div>
         )}

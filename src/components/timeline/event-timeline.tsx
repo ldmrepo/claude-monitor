@@ -17,20 +17,20 @@ interface Event {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  session: "bg-blue-500/15 text-blue-700",
-  tool: "bg-purple-500/15 text-purple-700",
-  task: "bg-green-500/15 text-green-700",
-  agent: "bg-orange-500/15 text-orange-700",
-  alert: "bg-red-500/15 text-red-700",
-  prompt: "bg-cyan-500/15 text-cyan-700",
-  compact: "bg-zinc-500/15 text-zinc-600",
+  session: "bg-blue-500/15 text-blue-300",
+  tool: "bg-purple-500/15 text-purple-300",
+  task: "bg-emerald-500/15 text-emerald-300",
+  agent: "bg-orange-500/15 text-orange-300",
+  alert: "bg-red-500/15 text-red-300",
+  prompt: "bg-cyan-500/15 text-cyan-300",
+  compact: "bg-zinc-500/15 text-zinc-300",
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
-  info: "text-zinc-500",
-  warning: "text-yellow-600",
-  error: "text-red-600",
-  critical: "text-red-700 font-bold",
+  info: "text-zinc-300",
+  warning: "text-amber-400",
+  error: "text-red-400",
+  critical: "text-red-300 font-bold",
 };
 
 const CATEGORIES = ["all", "session", "tool", "task", "agent", "alert"];
@@ -78,7 +78,7 @@ export function EventTimeline({ initialEvents }: { initialEvents: Event[] }) {
             <button
               key={c}
               onClick={() => setCategory(c)}
-              className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+              className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
                 category === c ? "bg-foreground text-background" : "hover:bg-muted"
               }`}
             >
@@ -91,7 +91,7 @@ export function EventTimeline({ initialEvents }: { initialEvents: Event[] }) {
             <button
               key={tr.label}
               onClick={() => setTimeRange(tr.ms)}
-              className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+              className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
                 timeRange === tr.ms ? "bg-foreground text-background" : "hover:bg-muted"
               }`}
             >
@@ -102,7 +102,7 @@ export function EventTimeline({ initialEvents }: { initialEvents: Event[] }) {
       </div>
 
       {eventList.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">No events found</div>
+        <div className="text-center py-12">No events found</div>
       ) : (
         <Table>
           <TableHeader>
@@ -119,23 +119,23 @@ export function EventTimeline({ initialEvents }: { initialEvents: Event[] }) {
             {eventList.map((e) => (
               <TableRow key={e.id}>
                 <TableCell>
-                  <TimeAgo date={e.observedAt} className="text-xs text-muted-foreground" />
+                  <TimeAgo date={e.observedAt} className="text-sm" />
                 </TableCell>
                 <TableCell>
-                  <Badge className={`text-xs ${CATEGORY_COLORS[e.eventCategory] || ""}`}>
+                  <Badge className={`text-sm ${CATEGORY_COLORS[e.eventCategory] || ""}`}>
                     {e.eventCategory}
                   </Badge>
                 </TableCell>
-                <TableCell className="font-mono text-xs">{e.eventType}</TableCell>
-                <TableCell className="font-mono text-xs text-muted-foreground">
+                <TableCell className="font-mono text-sm">{e.eventType}</TableCell>
+                <TableCell className="font-mono text-sm">
                   {e.sessionId?.slice(0, 8) || "—"}
                 </TableCell>
                 <TableCell>
-                  <span className={`text-xs ${SEVERITY_COLORS[e.severity || "info"] || ""}`}>
+                  <span className={`text-sm ${SEVERITY_COLORS[e.severity || "info"] || ""}`}>
                     {e.severity || "info"}
                   </span>
                 </TableCell>
-                <TableCell className="text-xs text-muted-foreground max-w-[250px] truncate">
+                <TableCell className="text-sm max-w-[250px] truncate">
                   {e.searchText || "—"}
                 </TableCell>
               </TableRow>

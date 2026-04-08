@@ -23,15 +23,15 @@ interface Alert {
 
 const SEVERITY_COLORS: Record<string, string> = {
   critical: "bg-red-600 text-white",
-  error: "bg-red-500/15 text-red-700",
-  warning: "bg-yellow-500/15 text-yellow-700",
-  info: "bg-blue-500/15 text-blue-700",
+  error: "bg-red-500/15 text-red-300",
+  warning: "bg-amber-500/15 text-amber-300",
+  info: "bg-blue-500/15 text-blue-300",
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  open: "bg-red-500/15 text-red-700 border-red-200",
-  acknowledged: "bg-yellow-500/15 text-yellow-700 border-yellow-200",
-  cleared: "bg-green-500/15 text-green-700 border-green-200",
+  open: "bg-red-500/15 text-red-300 border-red-500/30",
+  acknowledged: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+  cleared: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
 };
 
 export function AlertList({ initialAlerts }: { initialAlerts: Alert[] }) {
@@ -72,7 +72,7 @@ export function AlertList({ initialAlerts }: { initialAlerts: Alert[] }) {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+              className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
                 filter === f ? "bg-foreground text-background" : "hover:bg-muted"
               }`}
             >
@@ -83,7 +83,7 @@ export function AlertList({ initialAlerts }: { initialAlerts: Alert[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">
+        <div className="text-center py-12">
           No alerts{filter !== "all" ? ` with status "${filter}"` : ""}
         </div>
       ) : (
@@ -113,14 +113,14 @@ export function AlertList({ initialAlerts }: { initialAlerts: Alert[] }) {
                   </Badge>
                 </TableCell>
                 <TableCell className="font-medium text-sm">{a.title}</TableCell>
-                <TableCell className="text-xs text-muted-foreground max-w-[250px] truncate">
+                <TableCell className="text-sm max-w-[250px] truncate">
                   {a.message || "—"}
                 </TableCell>
-                <TableCell className="text-xs font-mono">
+                <TableCell className="text-sm font-mono">
                   {a.alertScopeId?.slice(0, 12) || "—"}
                 </TableCell>
                 <TableCell>
-                  <TimeAgo date={a.raisedAt} className="text-xs text-muted-foreground" />
+                  <TimeAgo date={a.raisedAt} className="text-sm" />
                 </TableCell>
                 <TableCell>
                   {a.status === "open" && (
@@ -128,7 +128,7 @@ export function AlertList({ initialAlerts }: { initialAlerts: Alert[] }) {
                       size="sm"
                       variant="outline"
                       onClick={() => handleAcknowledge(a.alertId)}
-                      className="text-xs h-7"
+                      className="text-sm h-8"
                     >
                       Ack
                     </Button>
