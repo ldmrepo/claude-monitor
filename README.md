@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/images/icon.png" alt="Claude Monitor" width="120" />
-</p>
-
 <h1 align="center">Claude Monitor</h1>
 
 <p align="center">Claude Code 세션을 실시간으로 모니터링하는 웹 대시보드</p>
