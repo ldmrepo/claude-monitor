@@ -28,18 +28,16 @@ function generateToolUseId(payload: HookPayload, observedAt: string): string {
   return `${payload.session_id}:${toolName}:${ts}`;
 }
 
+const TOOL_CATEGORIES: Record<string, string> = {
+  bash: "bash", read: "read", write: "write", edit: "edit",
+  glob: "read", grep: "read", agent: "agent",
+  webfetch: "web", websearch: "web",
+};
+
 function categorizeToolName(toolName: string): string {
   const lower = toolName.toLowerCase();
-  if (lower === "bash") return "bash";
-  if (lower === "read") return "read";
-  if (lower === "write") return "write";
-  if (lower === "edit") return "edit";
-  if (lower.includes("web") || lower.includes("fetch")) return "web";
-  if (lower === "agent") return "agent";
-  if (lower.includes("task")) return "task";
-  if (lower.startsWith("mcp")) return "mcp";
-  if (lower === "glob" || lower === "grep") return "read";
-  return "other";
+  return TOOL_CATEGORIES[lower]
+    ?? (lower.startsWith("mcp") ? "mcp" : "other");
 }
 
 /**
