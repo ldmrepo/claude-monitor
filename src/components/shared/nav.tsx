@@ -17,7 +17,7 @@ export function Nav() {
   return (
     <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 flex h-12 items-center gap-6">
-        <Link href="/" className="font-semibold text-sm tracking-tight">
+        <Link href="/" className="font-semibold tracking-tight">
           Claude Monitor
         </Link>
         <nav className="flex gap-1" aria-label="Main navigation">
@@ -30,7 +30,7 @@ export function Nav() {
               <Link
                 key={href}
                 href={href}
-                className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
+                className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                   isActive
                     ? "bg-accent text-accent-foreground font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
