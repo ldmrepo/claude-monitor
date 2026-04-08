@@ -9,17 +9,6 @@
 
 ![Architecture](docs/images/hero.png)
 
-## 스크린샷
-
-### Dashboard
-세션 목록, 활성 세션/도구/알림 통계, 실시간 상태 업데이트
-
-### Session Detail
-세션 메타데이터, Tool/Task/Agent 탭, 최근 메시지 표시
-
-### Event Timeline
-전체 이벤트 시간순 흐름, 카테고리/시간 필터
-
 ## 주요 기능
 
 - **10개 Hook 엔드포인트** — Claude Code 이벤트 실시간 수집
